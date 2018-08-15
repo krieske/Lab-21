@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+}
+@{ 
+string emailpattern = @"([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})";
+}
+<html>
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 50%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Registration</h2>
+    <form action="/Home/AddUser" method="post">
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+            <tr>
+                <td><input type="text" name="FirstName" class="form-control" pattern="[a-zA-Z]{2,30}" required/></td>
+                <td><input type="text" name="LastName" class="form-control" pattern="[a-zA-Z]{2,30}" required/></td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        <table>
+            <tr>
+                <th>Phone Number</th>
+            </tr>
+            <tr>
+                <td><input type="tel" name="PhoneNum" class="form-control" pattern="\d{3}-\d{3}-\d{4}" required/></td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        <table>
+            <tr>
+                <th>Email Address</th>
+            </tr>
+            <tr>
+                <td><input type="email" name="EmailAdd" class="form-control" pattern="@emailpattern" required/></td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        <table>
+            <tr>
+                <th>Password</th>
+            </tr>
+            <tr>
+                <td><input type="password" name="PassWord" placeholder="Minimum: 1 uppercase, 1 number, 8 chars" class="form-control" pattern="(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}" required/></td>
+            </tr>
+        </table>
+        <input type="submit" value="Sign Up!" class="btn-default" />
+    </form>
+</body>
+</html>
